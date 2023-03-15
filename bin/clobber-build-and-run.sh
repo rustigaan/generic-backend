@@ -43,11 +43,9 @@ then
 fi
 
 DO_BUILD_BACK_END='true'
-DO_BUILD_PRESENT='true'
 DO_BUILD_SWAGGER_IMAGE='false'
 if [[ ".$1" = '.--back-end-only' ]]
 then
-  DO_BUILD_PRESENT='false'
   DO_BUILD_SWAGGER_IMAGE='false'
   shift
 fi
@@ -126,19 +124,6 @@ function waitForDockerComposeReady() {
                 "${DOCKER_FLAGS[@]}" \
                 -v "${BUILD_VOLUME}:${BUILD_VOLUME}" -w "${PROJECT}" "${DOCKER_REPOSITORY}/rust" \
                 cargo build --target-dir 'target/linux'
-        fi
-
-        if "${DO_BUILD_PRESENT}"
-        then
-            info "Run npm install"
-            "${PROJECT}/present/bin/npm-install-in-docker.sh"
-            info "Run npm run build"
-            "${PROJECT}/present/bin/build-in-docker.sh"
-            info "Build docker images for presentation layer"
-            docker build -t "${DOCKER_REPOSITORY}/${ENSEMBLE_NAME}-present:${ENSEMBLE_IMAGE_VERSION}" present
-            EMPTY="${PROJECT}/target/empty-build-context"
-            mkdir -p "${EMPTY}"
-            docker build -t "${DOCKER_REPOSITORY}/${ENSEMBLE_NAME}-present:${ENSEMBLE_IMAGE_VERSION}-dev" -f present/Dockerfile-development "${EMPTY}"
         fi
 
         info "Build docker image for proxy"

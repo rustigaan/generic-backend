@@ -48,15 +48,6 @@ services:
         source: ${PROJECT}/target
         target: ${PROJECT}/target
       #${EXTRA_VOLUMES}
-  ${ENSEMBLE_NAME}-present:
-    image: ${DOCKER_REPOSITORY}/${ENSEMBLE_NAME}-present:${ENSEMBLE_IMAGE_VERSION}${PRESENT_SUFFIX}
-    networks:
-      - ${ENSEMBLE_NAME}
-    expose:
-      - "3000"
-    depends_on:
-      - axon-server
-    #${PRESENT_VOLUMES}
   config-manager:
     image: ${DOCKER_REPOSITORY}/config-manager:0.0.1-SNAPSHOT
     working_dir: /opt

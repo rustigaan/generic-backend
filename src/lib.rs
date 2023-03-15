@@ -1,8 +1,8 @@
-//! # Dendrite Example
+//! # Dendrite Generic Back-End
 //!
-//! Crate `dendrite_example` is a [Rust](https://www.rust-lang.org) example binary that connects to [AxonServer](https://axoniq.io/product-overview/axon-server).
+//! Crate `generic_backend` is a [Rust](https://www.rust-lang.org) generic back-end binary that connects to [AxonServer](https://axoniq.io/product-overview/axon-server).
 //!
-//! See the GitHub project [dendrite2go/dendrite](https://github.com/dendrite2go/archetype-rust-axon) for an example of how to use this code.
+//! See the GitHub project [rustigaan/generic-backend](https://github.com/rustigaan/generic-backend) for an example of how to use this code.
 
 pub mod application;
 pub mod example_api;
