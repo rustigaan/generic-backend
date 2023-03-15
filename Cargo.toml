@@ -1,0 +1,46 @@
+[package]
+name = "generic_backend"
+version = "0.1.0"
+authors = ["Jeroen van Maanen"]
+edition = "2018"
+description = "Event Sourcing and CQRS in Rust with AxonServer: Generic Back-end."
+readme = "README.md"
+homepage = "https://github.com/rustigaan/generic-backend"
+repository = "https://github.com/rustigaan/generic-backend"
+license = "MIT"
+keywords = ["event-sourcing", "CQRS", "AxonServer"]
+categories = ["web-programming"]
+include = ["/src/**/*", "/proto/**/*", "/Cargo.*", "/build.rs", "/README.md", "/LICENSE"]
+
+[dependencies]
+anyhow = "1.0"
+async-channel = "^1.7"
+async-lock = "^2.3"
+async-stream = "^0.3"
+base64 = "0.13.0"
+bytes = "^1.0"
+dendrite = { path = "../dendrite/dendrite", features = ["all"], version = "^0.12" } # path = "../dendrite/dendrite", #
+elasticsearch = "7.14.0-alpha.1"
+env_logger = "^0.9"
+futures-core = "^0.3"
+futures-util = "^0.3"
+jwt = "^0.16"
+lazy_static = "^1.4"
+log = "^0.4"
+mongodb = { version = "^2.3", features = ["bson-serde_with"] }
+pem = "^1.1"
+rand_core = "^0.6"
+rsa = "^0.7"
+serde = "~1"
+serde_json = "~1"
+sha2 = { version = "^0.10", features = ["oid"] }
+sshkeys = "^0.3"
+strum = "^0.24"
+strum_macros = "^0.24"
+tokio = { version = "^1.0", features = ["macros","rt-multi-thread","time","signal"] }
+tonic = "^0.8"
+prost = "^0.11"
+uuid = { version = "^1.2", features = ["v4"] }
+
+[build-dependencies]
+tonic-build = "^0.8"
